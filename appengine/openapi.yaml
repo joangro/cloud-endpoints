@@ -27,7 +27,13 @@ paths:
             $ref: "#/definitions/projects"
       security:
       - api_key: []
-
+  "/blobs"
+    get:
+      description: "Returns list of blobs in a bucket"
+      operationId: "getBlobs"
+      produces:
+              #TODO
+     
 definitions:
   projects:
     type: "object"
