@@ -1,0 +1,42 @@
+# General config
+swagger: "2.0"
+info:
+  title: "Fetch projects"
+  description: "Example APIs calling internal project APIs"
+  version: "1.0.0"
+host: "endpoints.wave16-joan.appspot.com"
+
+# Mime types to/from API
+consumes:
+- "application/json"
+produces:
+- "application/json"
+
+# App Engine endpoints
+paths:
+  "/projects":
+    get:
+      description: "Returns list of projects under owner name"
+      operationId: "getProjects"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Return string of projects"
+          schema:
+            $ref: "#/definitions/projects"
+      security:
+      - api_key: []
+
+definitions:
+  projects:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
