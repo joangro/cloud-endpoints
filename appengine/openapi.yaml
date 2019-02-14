@@ -21,28 +21,63 @@ paths:
       produces:
       - "application/json"
       responses:
-        200:
+        200:          
           description: "Return string of projects"
           schema:
             $ref: "#/definitions/projects"
       security:
       - api_key: []
-  "/blobs"
-    get:
+  "/blobs":
+    post:
       description: "Returns list of blobs in a bucket"
       operationId: "getBlobs"
       produces:
-              #TODO
-     
+      - "text/plain"
+      responses:
+        200:
+          description: "Returns list of blobs"
+          schema:
+            $ref: '#/definitions/blobs'
+        404:
+          description: "Bucket not found"
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: "Server unavailable"
+          schema:
+            $ref: '#/definitions/Error'
+      parameters:
+      - description: "bucket to read"
+        in: "body"
+        name: "bucket"
+        required: true
+        schema:
+          $ref: '#/definitions/blobs'
+      security:
+      - api_key: []
+
+# Object types
 definitions:
   projects:
     type: "object"
     properties:
       message:
         type: "string"
+  blobs:
+    type: 'object'
+    properties:
+      message:
+        type: 'string'
+  Error:
+    type: 'object'
+    properties:
+      message:
+        type: 'string'
 
+# Auth methods
 securityDefinitions:
   api_key:
     type: "apiKey"
     name: "key"
     in: "query"
+
