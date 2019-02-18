@@ -16,3 +16,5 @@ create_env()
 
 
 create_env
+
+alias='py_custom_install $(pwd) && source $(pwd)/env/bin/activate'
