@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while read i; do
+	if [[ $i == *"from"* ]]; then
+
+		echo $i
+	fi
+
+done <<< $(cat main.py | grep 'import')
+
+
