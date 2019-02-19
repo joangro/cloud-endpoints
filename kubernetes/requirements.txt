@@ -1,0 +1,4 @@
+flask
+gunicorn
+google-cloud-resource-manager
+google-cloud-storage
