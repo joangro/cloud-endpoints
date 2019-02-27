@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Joan Grau
-#
-# Make sure to have alias set to:
-# alias pyp='py_custom_install $(pwd) && if [ $(echo $?) -ne 0 ]; then source $(pwd)/env/bin/activate; fi'
-
 #ENV
 req=requirements.txt
 echo "Using directory $1"
@@ -12,8 +7,8 @@ echo "Using directory $1"
 create_env()
 {	
 	virtualenv ./env
+	source ./env/bin/activate
 	if [ -f $req ]; then
-		source ./env/bin/activate
 		pip install -r $req
 	else
 		install_from_file
@@ -23,33 +18,50 @@ create_env()
 
 install_from_file()
 {
+	if [[ ! -f $(echo main.py) ]]; then
+		echo -e "\nERROR: you should have a 'main.py' file, if you are creating a venv without a requirements.txt file"
+		echo -e "       Exiting..."
+		rm -r ./env
+		exit 1
+	fi
 
+	while read i; do
+        	if [[ $i == *"from"* ]]; then
+                	case $(echo $i | cut -d' ' -f 2) in
+                        	"google.cloud")
+                                	pip install $(echo "google-cloud-$(echo $i | cut -d' ' -f 4 | tr _ -)")
+                                	;;
+                        	*)
+                                	pip install $(echo $i | cut -d' ' -f 2)
+                                	;;
+                	esac
+        	else
+                	pip install $(echo $i | cut -d' ' -f 2)
+        	fi
 
-while read i; do
-        if [[ $i == *"from"* ]]; then
-                case $(echo $i | cut -d' ' -f 2) in
-                        "google.cloud")
-                                pip install $(echo "google-cloud-$(echo $i | cut -d' ' -f 4 | tr _ -)")
-                                ;;
-                        *)
-                                pip install $(echo $i | cut -d' ' -f 2)
-                                ;;
-                esac
-        else
-                pip install $(echo $i | cut -d' ' -f 2)
-        fi
-
-done <<< $(cat main.py | grep 'import')
+	done <<< $(cat main.py | grep 'import')
 
 }
 
 
 main()
 {
-	if [[ -n $(echo *.py) ]]; then
+	if [[ -z $(ls . | grep .py) ]];then
 		echo -e "\nERROR: Check if you are in the correct directory"
 		echo    "       (no existing .py files found)"
 		echo -e "\nExiting...\n"
+		exit 1
+	elif [ -d "env/" ]; then
+		echo -e "\nWARNING: Virtual environment folder already exists (./env)"
+		echo "Overwrite this folder? (Y/n)"
+		read sel
+		if [[ $sel == "Y" ]] || [[ $sel == "y" ]] || [[ $sel == "" ]]; then
+			create_env
+			exit 0
+		else
+
+			exit 1
+		fi
 	else
 		create_env
 	fi
@@ -57,3 +69,4 @@ main()
 
 main
 
+alias ll='py_custom_install $(pwd) && if [[ $( echo $?) == 0 ]]; then source $(pwd)/env/bin/activate; fi'
