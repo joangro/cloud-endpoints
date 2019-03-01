@@ -14,32 +14,33 @@ produces:
 
 # App Engine endpoints
 paths:
-  "/projects":
+  "/users":
     get:
-      description: "Returns list of projects under owner name"
-      operationId: "getProjects"
+      description: "Returns list of all the users registered in the site"
+      operationId: "AllStackUsers"
       produces:
       - "application/json"
       responses:
         200:          
-          description: "Return string of projects"
+          description: "Return a list of users"
           schema:
-            $ref: "#/definitions/projects"
+            $ref: "#/definitions/users"
       security:
       - api_key: []
-  "/blobs":
-    post:
-      description: "Returns list of blobs in a bucket"
-      operationId: "getBlobs"
+  
+  "/users/{userId}":
+    get:
+      description: "Returns the quieried user entity with all of his properties"
+      operationId: "StackUser"
       produces:
-      - "text/plain"
+      - "application/json"
       responses:
         200:
-          description: "Returns list of blobs"
+          description: "Returns an user"
           schema:
-            $ref: '#/definitions/blobs'
+            $ref: '#/definitions/user'
         404:
-          description: "Bucket not found"
+          description: "User not found"
           schema:
             $ref: '#/definitions/Error'
         500:
@@ -47,27 +48,31 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       parameters:
-      - description: "bucket to read"
-        in: "body"
-        name: "bucket"
-        required: true
-        schema:
-          $ref: '#/definitions/blobs'
+        - in: "path"
+          description: "User to get"
+          name: "userId"
+          type: "string"
+          required: true
       security:
       - api_key: []
 
 # Object types
 definitions:
-  projects:
-    type: "object"
-    properties:
-      message:
-        type: "string"
-  blobs:
+  users:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        users:
+          type: "string"
+  user:
     type: 'object'
     properties:
-      message:
+      username:
         type: 'string'
+      last_connection:
+        type: 'integer'
+ 
   Error:
     type: 'object'
     properties:

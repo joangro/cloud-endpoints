@@ -3,7 +3,6 @@ from flask_restful import Resource, Api
 
 from google.cloud import datastore
 
-import settings
 
 app = Flask(__name__)
 
@@ -11,7 +10,7 @@ api = Api(app)
 
 def DatastoreClient():
     return datastore.Client(
-                project=settings.PROJECT_ID
+                project="wave16-joan"
             )
 
     
@@ -20,7 +19,7 @@ class AllStackUsers(Resource):
         client = DatastoreClient()
         query = client.query(kind='Stack-user')
         users = query.fetch()
-        return jsonify({'hi': [str(e['username']) for e in users]})
+        return jsonify({'users': [str(e['username']) for e in users]})
 
 class StackUser(Resource):
     def get(self, user_id):
@@ -31,6 +30,7 @@ class StackUser(Resource):
         return jsonify({
                 "username": user['username'],
             })
+
     def put(self, user_id):
         pass
 
