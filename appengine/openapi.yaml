@@ -31,7 +31,7 @@ paths:
   "/users/{userId}":
     get:
       description: "Returns the quieried user entity with all of his properties"
-      operationId: "StackUser"
+      operationId: "StackUser.get"
       produces:
       - "application/json"
       responses:
@@ -55,6 +55,30 @@ paths:
           required: true
       security:
       - api_key: []
+    put:
+      description: "Add a new user to the database"
+      operationId: "StackUser.put"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+
+      parameters:
+        - in: "path"
+          description: "User to create"
+          name: "userId"
+          type: "string"
+          required: true
+        - in: "query"
+          description: "Age of the user to create"
+          type: "string"
+          name: "age"
+          required: false
+
+      security:
+      - service_account: []
+
 
 # Object types
 definitions:
@@ -85,4 +109,10 @@ securityDefinitions:
     type: "apiKey"
     name: "key"
     in: "query"
+  service_account:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "edit21@wave16-joan.iam.gserviceaccount.com"
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/edit21@wave16-joan.iam.gserviceaccount.com"
 

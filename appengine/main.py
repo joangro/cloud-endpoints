@@ -3,6 +3,8 @@ from flask_restful import Resource, Api
 
 from google.cloud import datastore
 
+from flask_swagger import swagger
+
 
 app = Flask(__name__)
 
@@ -32,11 +34,15 @@ class StackUser(Resource):
             })
 
     def put(self, user_id):
+
         pass
 
 api.add_resource(AllStackUsers,'/users')
 api.add_resource(StackUser,'/users/<user_id>')
 
+@app.route("/spec")
+def api_spec():
+    return jsonify(swagger(app))
 
 if __name__ == "__main__":
     app.run("127.0.0.1", 8080, debug=True)
