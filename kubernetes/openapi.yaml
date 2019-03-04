@@ -4,9 +4,7 @@ info:
   title: "Fetch projects"
   description: "Example APIs calling internal project APIs"
   version: "1.0.0"
-
-# HOSTNAME CHANGES
-host: "my-k8s-app.endpoints.wave16-joan.cloud.goog"
+host: "endpoints-oa-k8s.wave16-joan.appspot.com"
 
 # Mime types to/from API
 consumes:
@@ -16,32 +14,33 @@ produces:
 
 # App Engine endpoints
 paths:
-  "/projects":
+  "/users":
     get:
-      description: "Returns list of projects under owner name"
-      operationId: "getProjects"
+      description: "Returns list of all the users registered in the site"
+      operationId: "AllStackUsers"
       produces:
       - "application/json"
       responses:
         200:          
-          description: "Return string of projects"
+          description: "Return a list of users"
           schema:
-            $ref: "#/definitions/projects"
+            $ref: "#/definitions/users"
       security:
       - api_key: []
-  "/blobs":
-    post:
-      description: "Returns list of blobs in a bucket"
-      operationId: "getBlobs"
+  
+  "/users/{userId}":
+    get:
+      description: "Returns the quieried user entity with all of his properties"
+      operationId: "StackUser.get"
       produces:
-      - "text/plain"
+      - "application/json"
       responses:
         200:
-          description: "Returns list of blobs"
+          description: "Returns an user"
           schema:
-            $ref: '#/definitions/blobs'
+            $ref: '#/definitions/user'
         404:
-          description: "Bucket not found"
+          description: "User not found"
           schema:
             $ref: '#/definitions/Error'
         500:
@@ -49,48 +48,82 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       parameters:
-      - description: "bucket to read"
-        in: "body"
-        name: "bucket"
-        required: true
-        schema:
-          $ref: '#/definitions/blobs'
+        - in: "path"
+          description: "User to get"
+          name: "userId"
+          type: "string"
+          required: true
       security:
       - api_key: []
-  "/auth":
-    description: "checks authorization method"
-    operationId: "getAuth"
-    produces:
-    - "application/json"
-    responses:
-      200:
-        description: "return auth method"
-        schema:
-          $ref: '#/definitions/auth'
-    security:
-      - google_jwt: []
-      - gae_default_service_account: []
-      - google_service_account: []
+    put:
+      description: "Add a new user to the database"
+      operationId: "StackUser.put"
+      produces:
+      - "application/json"
+      responses:
+        201:
+          description: "OK"
+        400:
+          description: "User already exists"
+
+      parameters:
+        - in: "path"
+          description: "User to create"
+          name: "userId"
+          type: "string"
+          required: true
+        - in: "query"
+          description: "Age of the user to create"
+          type: "string"
+          name: "age"
+          required: false
+
+      security:
+      - service_account: []
+
+    delete:
+      description: "Deletes an user entity from the database"
+      operationId: "Stackuser.delete"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "User has been deleted"
+        400:
+          description: "User doesn't exist"
+        500:
+          description: "Server error, user could not be deleted"
+
+      parameters:
+        - in: "path"
+          description: "User to delete"
+          name: "userId"
+          type: "string"
+          required: true
+      security:
+      - api_key: []
+
+                
 
 
 # Object types
 definitions:
-  projects:
-    type: "object"
-    properties:
-      message:
-        type: "string"
-  blobs:
+  users:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        users:
+          type: "string"
+  user:
     type: 'object'
     properties:
-      message:
+      username:
         type: 'string'
+      last_connection:
+        type: 'integer'
+ 
   Error:
-    type: 'object'
-    properties:
-      message:
-        type: 'string'
-  auth:
     type: 'object'
     properties:
       message:
@@ -102,30 +135,10 @@ securityDefinitions:
     type: "apiKey"
     name: "key"
     in: "query"
-
-  google_jwt:
+  service_account:
     authorizationUrl: ""
     flow: "implicit"
     type: "oauth2"
-    x-google-issuer: "jwt-client.endpoints.sample.google.com"
-    x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/jwk/wave16-joan@appspot.gserviceaccount.com"
-    x-google-audiences: "my-k8s-app.endpoints.wave16-joan.cloud.goog"
-    x-google-allow: "configured"
-  
-  gae_default_service_account:
-    authorizationUrl: ""
-    flow: "implicit"
-    type: "oauth2"
-    x-google-issuer: "wave16-joan@appspot.gserviceaccount.com"
-    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/wave16-joan@appspot.gserviceaccount.com"
-    x-google-audiences: "my-k8s-app.endpoints.wave16-joan.google.com"
-
-  google_service_account:
-    authorizationUrl: ""
-    flow: "implicit"
-    type: "oauth2"
-    x-google-issuer: "wave16-joan@appspot.gserviceaccount.com"
-    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/wave16-joan@appspot.gserviceaccount.com"
-    x-google-audiences: "my-k8s-app.endpoints.wave16-joan.google.com"
-
+    x-google-issuer: "edit21@wave16-joan.iam.gserviceaccount.com"
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/edit21@wave16-joan.iam.gserviceaccount.com"
 

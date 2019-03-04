@@ -1,4 +1,5 @@
 flask
 gunicorn
-google-cloud-resource-manager
-google-cloud-storage
+flask-restful
+google-cloud-datastore
+pprint
