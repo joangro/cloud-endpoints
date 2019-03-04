@@ -1,0 +1,5 @@
+flask
+gunicorn
+flask-restful
+google-cloud-datastore
+pprint
