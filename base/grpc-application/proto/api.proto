@@ -1,0 +1,22 @@
+syntax="proto3";
+
+import "google/protobuf/empty.proto";
+
+package endpoints;
+
+message StackUsers {
+	//repeated string users = 1 [packed=true];
+	string users = 1;
+}
+
+message StackUser {
+	string username = 1;
+
+}
+
+
+service Users {
+	rpc GetUsers (google.protobuf.Empty) returns (StackUsers) {}
+
+}
+
