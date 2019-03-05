@@ -4,7 +4,9 @@
 
 2. Create application container
 
-```sudo docker run --detach --name=endpoints-oa-ce --net=esp_net gcr.io/wave16-joan/endpoints-image:v0```
+```sudo docker run --detach \
+                   --name=endpoints-oa-ce \
+                   --net=esp_net gcr.io/wave16-joan/endpoints-image:v0 ```
 
 3. Create ESP proxy container pointing to application
 
