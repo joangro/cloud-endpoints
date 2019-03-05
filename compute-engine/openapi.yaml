@@ -5,9 +5,9 @@ info:
   description: "Example APIs calling internal project APIs"
   version: "1.0.0"
 host: "endpoints-oa-ce.endpoints.wave16-joan.cloud.goog"
-x-google-endpoints:
-- name: "endpoints-oa-ce.endpoints.wave16-joan.cloud.goog"
-  target: "35.228.1.226"
+#x-google-endpoints:
+#- name: "endpoints-oa-ce.endpoints.wave16-joan.cloud.goog"
+#  target: "35.228.1.226"
 
 # Mime types to/from API
 consumes:
