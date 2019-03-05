@@ -8,12 +8,13 @@
 
 3. Create ESP proxy container pointing to application
 
-```sudo docker run     --name=esp \
-                        --detach \
-                        --publish=80:8080 \
-                        --net=esp_net \
-                        gcr.io/endpoints-release/endpoints-runtime:1 \
-                        --service=endpoints-oa-ce.endpoints.wave16-joan.cloud.goog \
-                        --rollout_strategy=managed \
-                        --backend=endpoints-oa-ce:8080 ```
+```
+sudo docker run --name=esp \
+                --detach \
+                -publish=80:8080 \
+                --net=esp_net \
+                gcr.io/endpoints-release/endpoints-runtime:1 \
+                --service=endpoints-oa-ce.endpoints.wave16-joan.cloud.goog \
+                --rollout_strategy=managed \
+                --backend=endpoints-oa-ce:8080 ```
 
