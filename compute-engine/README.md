@@ -6,7 +6,8 @@ sudo docker network create --driver bridge esp_net
 
 2. Create application container
 
-```sudo docker run --detach \
+```
+sudo docker run --detach \
                    --name=endpoints-oa-ce \
                    --net=esp_net gcr.io/wave16-joan/endpoints-image:v0
 ```
