@@ -3,6 +3,8 @@ from endpoints import message_types
 from endpoints import messages
 from endpoints import remote
 
+from google.appengine.ext import ndb
+
 
 class ReturnUser(messages.Message):
     user = messages.StringField(1)
@@ -37,8 +39,20 @@ class UsersAPI(remote.Service):
         http_method='GET',
         name='getUsers')
     def get_users(self, request):
-        return ReturnUsers(users=[
-                                ReturnUser(user="hi")
-                            ])
+        entities = User.query_users()
+        user_list = [ReturnUser(user=entity.username) for entity in entities]
+        return ReturnUsers(users=user_list)
+
+
+class User(ndb.Model):
+    username = ndb.StringProperty()
+
+    @classmethod
+    def query_users(cls):
+        query = User.query()
+        users = query.fetch()
+        for user in users:
+            print('hi')
+        return query
        
 api = endpoints.api_server([UsersAPI])
