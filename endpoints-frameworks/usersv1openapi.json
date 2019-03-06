@@ -1,0 +1,64 @@
+{
+  "basePath": "/_ah/api",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "MainReturnUser": {
+      "properties": {
+        "user": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MainReturnUsers": {
+      "properties": {
+        "users": {
+          "items": {
+            "$ref": "#/definitions/MainReturnUser"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "endpoints-frameworks.wave16-joan.appspot.com",
+  "info": {
+    "title": "users",
+    "version": "v1"
+  },
+  "paths": {
+    "/users/v1/users": {
+      "get": {
+        "operationId": "UsersAPI_getUsers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/MainReturnUsers"
+            }
+          }
+        }
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "google_id_token": {
+      "authorizationUrl": "",
+      "flow": "implicit",
+      "type": "oauth2",
+      "x-google-issuer": "https://accounts.google.com",
+      "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
+    }
+  },
+  "swagger": "2.0"
+}
