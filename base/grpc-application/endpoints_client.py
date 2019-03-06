@@ -1,23 +1,31 @@
 import grpc
-import api_pb2_grpc
-import api_pb2
+import endpoints_pb2_grpc
+import endpoints_pb2
 
 
 
-class EndpointsClient(object):
+class UsersClient():
+    '''
+    Client to execute the requests
+    '''
     def __init__(self):
-        self.host='localhost'
-        self.server_port = 8080
+        self.host = "127.0.0.1"
+        self.port = 8080
 
-        self.channel = grpc.insecure_channel('{}.{}'.format(self.host, self.server_port))
+        self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.port))
 
-        self.stub = api_pb2_grpc.UsersStub(self.channel)
+        self.stub = endpoints_pb2_grpc.UsersStub(self.channel)
 
-    def get_users(self):
-        return self.stub.GetUsers()
+    def get_users(self, message=None):
+        entity_to_get = endpoints_pb2.Entity(entity="None")
+        response = self.stub.GetUsers(entity_to_get)
+        return response
 
+    def get_user(self, message="joangro"):
+        user_to_get = endpoints_pb2.User(username=message)
+        response = self.stub.getUser(user_to_get)
+        return response
 
-
-client = EndpointsClient()
-
-client.get_users()
+client = UsersClient()
+print(client.get_users())
+print(client.get_user())
