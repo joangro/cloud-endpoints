@@ -53,6 +53,10 @@ paths:
           name: "userId"
           type: "string"
           required: true
+      # Define quota
+      x-google-quota:
+        metricCosts:
+          "users-requested": 1
       security:
       - api_key: []
     put:
@@ -79,6 +83,7 @@ paths:
           required: false
 
       security:
+      - api_key: []
       - service_account: []
 
     delete:
@@ -103,7 +108,21 @@ paths:
       security:
       - api_key: []
 
-                
+# QUOTAS
+x-google-management:   
+  metrics:
+    - name: "users-requested"
+      displayName: "Users GET requests"
+      valueType: INT64
+      metricKind: DELTA
+  quota:
+    limits:
+      - name: "users-requested-limits"
+        metric: "users-requested"
+        unit: "1/min/{project}"
+        values:
+          STANDARD: 5
+
 
 
 # Object types
