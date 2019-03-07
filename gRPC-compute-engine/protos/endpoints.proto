@@ -1,0 +1,31 @@
+// Example proto file
+syntax="proto3";
+
+package endpoints;
+
+service Users {
+	rpc GetUsers (Entity) returns (UserList) {}
+	rpc getUser (User) returns (UserReturned) {}
+	//rpc addUser (User) returns (StatusResponse) {}
+
+}
+
+message Entity {
+	string entity = 1;
+
+}
+
+message UserList {
+	repeated string username = 1;
+
+}
+
+message User {
+	string username = 1;
+
+}
+
+message UserReturned {
+	string username = 1;
+
+}

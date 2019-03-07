@@ -22,7 +22,16 @@ class RequestUsers(messages.Message):
 class OkStatusResponse(messages.Message):
     status = message_types.VoidMessage
 
-@endpoints.api(name='users', version='v1')
+quota_limits = [
+    endpoints.LimitDefinition(
+        "put-users-metric",
+        "Metric for PUT users",
+        5)
+    ]
+
+@endpoints.api(name='users', 
+        version='v1', 
+        limit_definitions=quota_limits)
 class UsersAPI(remote.Service):
 
     @endpoints.method(
@@ -43,7 +52,8 @@ class UsersAPI(remote.Service):
         ReturnUser,
         path='users/{user}',
         http_method='GET',
-        name='getUser')
+        name='getUser',
+        api_key_required=True)
     def get_user(self, request):
         queried_user=User.query_user(user=request.user)
         return  ReturnUser(user=queried_user[0].username, age='20')
@@ -54,7 +64,8 @@ class UsersAPI(remote.Service):
         OkStatusResponse,
         path='users/{user}',
         http_method='PUT',
-        name='addUser')
+        name='addUser',
+        metric_costs={"put-users-metric": 1})
     def add_user(self, request):
         user_to_add = request.user
         print(user_to_add)

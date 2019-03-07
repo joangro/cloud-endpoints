@@ -69,7 +69,12 @@
               "$ref": "#/definitions/MainReturnUser"
             }
           }
-        }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
       },
       "put": {
         "operationId": "UsersAPI_addUser",
@@ -96,6 +101,11 @@
               "$ref": "#/definitions/MainOkStatusResponse"
             }
           }
+        },
+        "x-google-quota": {
+          "metricCosts": {
+            "put-users-metric": 1
+          }
         }
       }
     }
@@ -107,6 +117,11 @@
     "https"
   ],
   "securityDefinitions": {
+    "api_key": {
+      "in": "query",
+      "name": "key",
+      "type": "apiKey"
+    },
     "google_id_token": {
       "authorizationUrl": "",
       "flow": "implicit",
@@ -115,5 +130,27 @@
       "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
     }
   },
-  "swagger": "2.0"
+  "swagger": "2.0",
+  "x-google-management": {
+    "metrics": [
+      {
+        "metricKind": "GAUGE",
+        "name": "put-users-metric",
+        "valueType": "INT64"
+      }
+    ],
+    "quota": {
+      "limits": [
+        {
+          "displayName": "Metric for PUT users",
+          "metric": "put-users-metric",
+          "name": "put-users-metric",
+          "unit": "1/min/{project}",
+          "values": {
+            "STANDARD": 5
+          }
+        }
+      ]
+    }
+  }
 }

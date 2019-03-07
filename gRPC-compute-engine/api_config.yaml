@@ -1,0 +1,16 @@
+type: google.api.Service
+config_version: 3
+
+name: grpc-ce.endpoints.wave16-joan.cloud.goog
+
+title: gRPC-compute-engine
+
+apis:
+- name: endpoints.Users
+
+usage:
+  rules:
+  - selector: endpoints.Users.GetUsers
+    allow_unregistered_calls: true
+  - selector: endpoints.Users.getUser
+    allow_unregistered_calls: true
