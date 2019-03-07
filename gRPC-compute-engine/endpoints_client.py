@@ -9,8 +9,8 @@ class UsersClient():
     Client to execute the requests
     '''
     def __init__(self):
-        #self.host = "127.0.0.1"
-        self.host= "35.203.149.138"
+        self.host = "127.0.0.1"
+        #self.host= "35.203.149.138"
         self.port = 80
 
         self.channel = grpc.insecure_channel('{}:{}'.format(self.host, self.port))
