@@ -1,0 +1,24 @@
+runtime: python27
+threadsafe: true
+api_version: 1
+
+service: endpoints-frameworks
+
+handlers:
+# The endpoints handler must be mapped to /_ah/api.
+- url: /_ah/api/.*
+  script: main.api
+
+
+env_variables:
+  # The following values are to be replaced by information from the output of
+  # 'gcloud endpoints services deploy swagger.json' command.
+  ENDPOINTS_SERVICE_NAME: endpoints-frameworks.wave16-joan.appspot.com
+
+
+libraries:
+- name: pycrypto
+  version: 2.6
+- name: ssl
+  version: 2.7.11
+

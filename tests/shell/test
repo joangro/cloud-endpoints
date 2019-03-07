@@ -2,8 +2,16 @@
 
 while read i; do
 	if [[ $i == *"from"* ]]; then
-
-		echo $i
+		case $(echo $i | cut -d' ' -f 2) in
+			"google.cloud")
+				pip install $(echo "google-cloud-$(echo $i | cut -d' ' -f 4 | tr _ -)")
+				;;
+			*)
+				pip install $(echo $i | cut -d' ' -f 2)
+				;;
+		esac
+	else
+		pip install $(echo $i | cut -d' ' -f 2)
 	fi
 
 done <<< $(cat main.py | grep 'import')

@@ -23,7 +23,7 @@ def service_account(service, expiry_time=3600):
     
     signer = google.auth.crypt.RSASigner.from_service_account_file('key.json')
     jwt = google.auth.jwt.encode(signer, payload)
-    print (jwt.decode("utf-8"))
+    print ("export JWT=" + jwt.decode("utf-8"))
     
     
     
