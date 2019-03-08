@@ -11,7 +11,8 @@ sudo service docker start
 ```
 ./create-docker-image.sh <MY-VERSION-ID>
 ```
-    or
+
+* example:
 
 ```
 ./create-docker-image.sh v0
