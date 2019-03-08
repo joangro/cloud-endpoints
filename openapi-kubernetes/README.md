@@ -71,3 +71,8 @@ gcloud container clusters get-credentials YOUR-CLUSTER-NAME --zone=YOUR-CLUSTER-
 ```
 kubectl create -f deployment.yaml
 ```
+
+5. Get external cluster IP, used for calling the API:
+```
+kubectl get service
+```
