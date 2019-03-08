@@ -3,7 +3,7 @@
 Example implementations of the [Google Cloud Endpoints](https://cloud.google.com/endpoints/) API Managment service. 
 Cloud Endpoints offers the possibility to implement and API service with three communications protocols: OpenAPI, gRPC and Endpoints Frameworks.
 
-It includes the following:
+## Repository Structure ##
 
 * **Base**: The base code for the three API implementations. It includes the following:
 
