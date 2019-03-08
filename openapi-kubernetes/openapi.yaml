@@ -1,8 +1,8 @@
 # General config
 swagger: "2.0"
 info:
-  title: "Fetch projects"
-  description: "Example APIs calling internal project APIs"
+  title: "OpenAPI Kubernetes"
+  description: "Example OpenAPI configuration to call Project Datastore"
   version: "1.0.0"
 host: "endpoints-oa-k8s.wave16-joan.appspot.com"
 
@@ -139,6 +139,5 @@ securityDefinitions:
     authorizationUrl: ""
     flow: "implicit"
     type: "oauth2"
-    x-google-issuer: "edit21@wave16-joan.iam.gserviceaccount.com"
-    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/edit21@wave16-joan.iam.gserviceaccount.com"
-
+    x-google-issuer: "endpoints-sa@sbt-endpoints.iam.gserviceaccount.com"
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/endpoints-sa@sbt-endpoints.iam.gserviceaccount.com"

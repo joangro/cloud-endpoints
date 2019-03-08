@@ -2,11 +2,9 @@ runtime: python
 env: flex
 entrypoint: gunicorn -b :$PORT main:app
 
-service: endpoints
-
 runtime_config:
   python_version: 3
 
 endpoints_api_service:
-  name: endpoints.wave16-joan.appspot.com
+  name: endpoints.sbt-endpoints.appspot.com
   rollout_strategy: managed

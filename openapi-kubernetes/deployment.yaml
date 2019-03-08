@@ -35,7 +35,7 @@ spec:
         ports:
         - containerPort: 8081
       - name: k8s-oa-api
-        image: gcr.io/wave16-joan/endpoints-image:v0
+        image: gcr.io/sbt-endpoints/endpoints-image:v0
         ports:
         - containerPort: 8080
 

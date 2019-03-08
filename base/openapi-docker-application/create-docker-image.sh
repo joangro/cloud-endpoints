@@ -9,15 +9,15 @@ main()
 {
 	IMAGE_NAME="gcr.io/${PROJECT_ID}/endpoints-image${IMAGE_VERSION}"
 	echo "Creating docker image with name $IMAGE_NAME ..."
-	docker build -t $IMAGE_NAME .
+	sudo docker build -t $IMAGE_NAME .
 
 	echo -e "\nPushing image to gcr.io ..."
-	docker push $IMAGE_NAME
+	sudo docker push $IMAGE_NAME
 
 	echo -e "\nDONE"
 	echo "Built image: $IMAGE_NAME"
 	echo "Run the following command to test it locally:"
-	echo -e "\ndocker run --rm -p 8080:8080 $IMAGE_NAME \n"
+	echo -e "\nsudo docker run --rm -p 8080:8080 $IMAGE_NAME \n"
 }
 
 
