@@ -29,7 +29,38 @@ The APIs have the following handlers and methods:
 
 ###### GET /users ######
 
+- Request parameters: *None*
+- Authentication required: **API Key**
+- Limits: *None*
+- Response: List of users
 
+###### GET /users/{user} ######
+
+- Request parameters:
+    - **user**: Required - in path
+    - **age**: Optional - in body
+- Authentication required: **API Key**
+- Limits: **5 requests/min**
+- Response: User entity properties
+
+###### PUT /users/{user} ######
+
+- Request parameters:
+    - **user**: Required - in path
+    - **age**: Optional - in body
+- Authentication required (**both are required!**): 
+    - **API Key**
+    - **JWT Token**
+- Limits: *None*
+- Response: Status (OK/ERROR)
+
+###### DELETE /users/{user} ######
+
+- Request parameters:
+    - **user**: Required - in path
+- Authentication required: **API Key**
+- Limits: *None*
+- Response: Status (OK/ERROR)
 
 ## Repository Structure ##
 
