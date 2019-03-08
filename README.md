@@ -15,6 +15,11 @@ Status of the Cloud Endpoints runtimes at the state of the creation of this repo
 |  App Engine Flex     | :heavy_check_mark: |   :x:                 |  :x:                 |
 |  App Engine Standard | :x:                |   :x:                 |  :heavy_check_mark:  |
 
+
+## API baseline structure ##
+
+All the APIs, despite running in different environments/frameworks, are designed with the same baseline logic.
+
 ## Repository Structure ##
 
 * **base**: The base code for the three API implementations. It includes the following:
