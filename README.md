@@ -18,7 +18,12 @@ Status of the Cloud Endpoints runtimes at the state of the creation of this repo
 
 ## API baseline structure ##
 
-All the APIs, despite running in different environments/frameworks, are designed with the same baseline logic.
+All the APIs, despite running in different environments/frameworks, are designed with the same baseline logic:
+
+1. All APIs are written in Python
+2. All APIs communicate to [Datastore](https://cloud.google.com/datastore/docs/concepts/overview) in the backend, to perform the API logic/operations. All the environments use the [Datastore Cloud Client Libraries](https://googleapis.github.io/google-cloud-python/latest/datastore/client.html), except for Endpoints Frameworks, which uses the [Python NDB Client Library](https://cloud.google.com/appengine/docs/standard/python/ndb/).
+
+### API structure overview ###
 
 ## Repository Structure ##
 
