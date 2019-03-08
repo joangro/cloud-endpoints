@@ -9,7 +9,7 @@ Status of the Cloud Endpoints runtimes at the state of the creation of this repo
 
 
 | Environment        | OpenAPI | gRPC  | Endpoints Frameworks |
-| -------------------|:-------------:| -----:||
+| -------------------|:-------------:| -----:|-------|
 | Kubernetes         | :heavy_check_mark: | $1600 ||
 | Compute Engine     | centered      |   $12 ||
 | App Engine Flex    | are neat      |    $1 ||
