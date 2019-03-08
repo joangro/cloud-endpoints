@@ -7,7 +7,7 @@ Cloud Endpoints offers the possibility to implement and API service with three c
 
 * **Base**: The base code for the three API implementations. It includes the following:
 
-    * [openapi-flask-application](openapi-flask-application): The base API code for OpenAPI implementations. Based in [Flask](http://flask.pocoo.org/) and  [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/).
+    * [openapi-flask-application](/openapi-flask-application): The base API code for OpenAPI implementations. Based in [Flask](http://flask.pocoo.org/) and  [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/).
     
     * **openapi-docker-application**: The same previous API code, but with an additional script to Dockerize it.
     
