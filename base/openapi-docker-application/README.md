@@ -2,14 +2,14 @@
 
 1. start docker
 
-`sudo service docker start` 
+    `sudo service docker start` 
 
 2. Run script, while in this same folder:
 
-`./create-docker-image.sh <MY-VERSION-ID>`
+    `./create-docker-image.sh <MY-VERSION-ID>`
 
 i.e.
 
-`./create-docker-image.sh v0`
+    `./create-docker-image.sh v0`
 
 3. Run/use the image as shown
