@@ -13,7 +13,7 @@ class UsersServicer(endpoints_pb2_grpc.UsersServicer):
     <SERVICE_NAME>Servicer: implements the gRPC server
     '''
     def __init__(self, *args, **kwargs):
-        self.server_port = 8080
+        self.server_port = 8000
 
     def GetUsers(self, request, context):
         '''
