@@ -10,7 +10,7 @@ host: "endpoints-oa-k8s.<YOUR-PROJECT-ID>.appspot.com"
 
     1. Create service account with a key file, see [this documentation](https://cloud.google.com/endpoints/docs/openapi/service-account-authentication#create_service_account). 
     
-    2. Create an image of the application. See this documentation.
+    2. Create an image of the application. See [this documentation](https://github.com/joangro/cloud-endpoints/tree/master/base/openapi-docker-application).
     
     3. Change the following in the `deployment.yaml` file:
       ```
