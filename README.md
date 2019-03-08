@@ -16,3 +16,9 @@ Cloud Endpoints offers the possibility to implement and API service with three c
     * [endpoints-frameworks](/base/endpoints-frameworks): Base code for the Endpoints Frameworks implementation.
     
     * [auth-methods](/base/auth-methods): Code to create the credentials/tokens in order to authenticate into some of the API handlers.
+
+* **endpoints-frameworks**: Implementation of the [Endpoints Frameworks](https://cloud.google.com/endpoints/docs/frameworks/about-cloud-endpoints-frameworks) App Engine framework, in App Engine Standard using the Python libraries.
+
+* **gRPC-compute-engine**: Implementation of the [gRPC framework](https://cloud.google.com/endpoints/docs/grpc/about-grpc) API in [Compute Engine](https://cloud.google.com/endpoints/docs/grpc/get-started-compute-engine-docker)
+
+* **gRPC-compute-engine**: Implementation of the [gRPC framework](https://cloud.google.com/endpoints/docs/grpc/about-grpc) API in [ Google Kubernetes Engine (GKE)](https://cloud.google.com/endpoints/docs/grpc/get-started-kubernetes-engine)
