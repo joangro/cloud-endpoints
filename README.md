@@ -17,8 +17,17 @@ Cloud Endpoints offers the possibility to implement and API service with three c
     
     * [auth-methods](/base/auth-methods): Code to create the credentials/tokens in order to authenticate into some of the API handlers.
 
-* **endpoints-frameworks**: Implementation of the [Endpoints Frameworks](https://cloud.google.com/endpoints/docs/frameworks/about-cloud-endpoints-frameworks) App Engine framework, in App Engine Standard using the Python libraries.
+* **endpoints-frameworks**: Implementation of the [Endpoints Frameworks](https://cloud.google.com/endpoints/docs/frameworks/about-cloud-endpoints-frameworks) App Engine framework, in App Engine Standard using the Python runtime.
 
-* **gRPC-compute-engine**: Implementation of the [gRPC framework](https://cloud.google.com/endpoints/docs/grpc/about-grpc) API in [Compute Engine](https://cloud.google.com/endpoints/docs/grpc/get-started-compute-engine-docker)
+* **gRPC-compute-engine**: Implementation of the [gRPC framework](https://cloud.google.com/endpoints/docs/grpc/about-grpc) API in [Compute Engine](https://cloud.google.com/endpoints/docs/grpc/get-started-compute-engine-docker).
 
-* **gRPC-compute-engine**: Implementation of the [gRPC framework](https://cloud.google.com/endpoints/docs/grpc/about-grpc) API in [ Google Kubernetes Engine (GKE)](https://cloud.google.com/endpoints/docs/grpc/get-started-kubernetes-engine)
+* **gRPC-kubernetes**: Implementation of the [gRPC framework](https://cloud.google.com/endpoints/docs/grpc/about-grpc) API in [ Google Kubernetes Engine (GKE)](https://cloud.google.com/endpoints/docs/grpc/get-started-kubernetes-engine).
+
+* **openapi-app-engine-flexible**: Implementation of the [OpenAPI management system](https://cloud.google.com/endpoints/docs/openapi/) in [App Engine Flexible](https://cloud.google.com/endpoints/docs/openapi/get-started-app-engine), the Python runtime.
+
+* **openapi-compute-engine**: Implementation of the [OpenAPI management system](https://cloud.google.com/endpoints/docs/openapi/) in [Compute Engine](https://cloud.google.com/endpoints/docs/openapi/get-started-compute-engine-docker).
+
+* **openapi-kubernetes**:  Implementation of the [OpenAPI management system](https://cloud.google.com/endpoints/docs/openapi/) in [Google Kubernetes Engine (GKE)](https://cloud.google.com/endpoints/docs/openapi/get-started-kubernetes-engine).
+
+
+
