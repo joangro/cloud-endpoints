@@ -1,7 +1,5 @@
 *Pasted from the root README.md*
 
-## Repository Structure ##
-
 * **base**: The base code for the three API implementations. It includes the following:
 
     * [openapi-flask-application](/base/openapi-flask-application): The base API code for OpenAPI implementations. Based in [Flask](http://flask.pocoo.org/) and  [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/).
