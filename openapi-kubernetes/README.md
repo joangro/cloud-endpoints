@@ -22,9 +22,9 @@ host: "endpoints.<YOUR-PROJECT-ID>.appspot.com"
         x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/<ACCOUNT-NAME>@<YOUR-PROJECT-ID>.iam.gserviceaccount.com"
     ```
 
-## Deploy
+## Deploying
 
-OpenAPI service:
+Deploy service:
 
 ```
 gcloud endpoints services deploy openapi.yaml
