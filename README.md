@@ -25,7 +25,7 @@ All the APIs, despite running in different environments/frameworks, are designed
 
 ### API structure overview ###
 
-The APIs have the following handlers and methods:
+The APIs have the following method/handler:
 
 ###### GET /users ######
 
