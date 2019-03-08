@@ -5,7 +5,7 @@ Cloud Endpoints offers the possibility to implement and API service with three c
 
 ## Repository Structure ##
 
-* **Base**: The base code for the three API implementations. It includes the following:
+* **base**: The base code for the three API implementations. It includes the following:
 
     * [openapi-flask-application](/base/openapi-flask-application): The base API code for OpenAPI implementations. Based in [Flask](http://flask.pocoo.org/) and  [Flask-RESTful](https://flask-restful.readthedocs.io/en/latest/).
     
@@ -13,6 +13,6 @@ Cloud Endpoints offers the possibility to implement and API service with three c
     
     * [grpc-application](/base/grpc-application): Base code for gRPC based APIs.
     
-    * [endpoints-frameworks](/base/endpoints-frameworks): Base code for the Endpoits Frameworks implementation.
+    * [endpoints-frameworks](/base/endpoints-frameworks): Base code for the Endpoints Frameworks implementation.
     
     * [auth-methods](/base/auth-methods): Code to create the credentials/tokens in order to authenticate into some of the API handlers.
