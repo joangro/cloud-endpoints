@@ -3,6 +3,18 @@
 Example implementations of the [Google Cloud Endpoints](https://cloud.google.com/endpoints/) API Managment service. 
 Cloud Endpoints offers the possibility to implement and API service with three communications protocols: OpenAPI, gRPC and Endpoints Frameworks.
 
+This repository implements all of the environments where the Cloud Endpoints APIs can run, except for pure Kubernetes environments, as these were done already in GKE.
+
+Status of the Cloud Endpoints runtimes at the state of the creation of this repository (March 2019):
+
+
+| Environment        | OpenAPI | gRPC  | Endpoints Frameworks |
+| -------------------|:-------------:| -----:|
+| Kubernetes         | :heavy_check_mark: | $1600 |
+| Compute Engine     | centered      |   $12 |
+| App Engine Flex    | are neat      |    $1 |
+|App Engine Standard |
+
 ## Repository Structure ##
 
 * **base**: The base code for the three API implementations. It includes the following:
