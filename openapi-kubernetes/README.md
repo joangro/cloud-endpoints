@@ -24,8 +24,29 @@ host: "endpoints.<YOUR-PROJECT-ID>.appspot.com"
 
 ## Deploying
 
-Deploy service:
+1. Deploy service:
 
 ```
 gcloud endpoints services deploy openapi.yaml
+```
+
+2. Create Kubernetes cluster:
+
+```
+gcloud container clusters create YOUR-CLUSTER-NAME \
+                                 --zone=YOUR-CLUSTER-ZONE \
+                                 --machine-type=n1-standard-1 \
+                                 --num-nodes=1 \
+                                 --scopes=cloud-platform
+```
+
+3. Get cluster credentials:
+
+```
+gcloud container clusters get-credentials YOUR-CLUSTER-NAME --zone=YOUR-CLUSTER-ZONE
+```
+
+4. Deploy Kubernetes deployment:
+```
+kubectl create -f deployment.yaml
 ```
