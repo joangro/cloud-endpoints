@@ -25,6 +25,12 @@ All the APIs, despite running in different environments/frameworks, are designed
 
 ### API structure overview ###
 
+The APIs have the following handlers and methods:
+
+###### GET /users ######
+
+
+
 ## Repository Structure ##
 
 * **base**: The base code for the three API implementations. It includes the following:
