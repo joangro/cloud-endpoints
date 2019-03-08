@@ -3,7 +3,7 @@
 1. Change `host:` in the `openapi.yaml` file:
 
 ```
-host: "endpoints.<YOUR-PROJECT-ID>.appspot.com"
+host: "endpoints-oa-k8s.<YOUR-PROJECT-ID>.appspot.com"
 ```
 
 2. Change the service account of the `openapi.yaml` file:
@@ -19,7 +19,7 @@ host: "endpoints.<YOUR-PROJECT-ID>.appspot.com"
         args: [
           "--http_port=8081",
           "--backend=0.0.0.0:8080",
-          "--service=endpoints.<YOUR-PROJECT-ID>.appspot.com",
+          "--service=endpoints-oa-k8s.<YOUR-PROJECT-ID>.appspot.com",
           "--rollout_strategy=managed",
         ]
       ```
