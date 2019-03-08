@@ -35,3 +35,13 @@ endpoints_api_service:
 
 1. Deploy service:
 
+```
+gcloud endpoints services deploy openapi.yaml
+```
+
+2. Deploy application:
+
+```
+gcloud app deploy
+```
+
