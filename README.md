@@ -8,12 +8,12 @@ This repository implements all of the environments where the Cloud Endpoints API
 Status of the Cloud Endpoints runtimes at the state of the creation of this repository (March 2019):
 
 
-| Environment        | OpenAPI | gRPC  | Endpoints Frameworks |
-| -------------------|:-------------:| -----:|-------|
-| Kubernetes         | :heavy_check_mark: | $1600 ||
-| Compute Engine     | centered      |   $12 ||
-| App Engine Flex    | are neat      |    $1 ||
-|App Engine Standard ||||
+|     Environment      |      OpenAPI       |         gRPC          | Endpoints Frameworks |
+| ---------------------|:------------------:|:---------------------:|:--------------------:|
+|  Kubernetes          | :heavy_check_mark: |   :heavy_check_mark:  |  :x:                 |
+|  Compute Engine      | :heavy_check_mark: |   :heavy_check_mark:  |  :x:                 |
+|  App Engine Flex     | :heavy_check_mark: |   :x:                 |  :x:                 |
+|  App Engine Standard | :x:                |   :x:                 |  :heavy_check_mark:  |
 
 ## Repository Structure ##
 
