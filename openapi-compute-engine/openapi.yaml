@@ -1,10 +1,10 @@
 # General config
 swagger: "2.0"
 info:
-  title: "Fetch projects"
-  description: "Example APIs calling internal project APIs"
+  title: "OpenAPI Compute Engine"
+  description: "Example OpenAPI configuration to call Project Datastore, from Compute Engine"
   version: "1.0.0"
-host: "endpoints-oa-ce.endpoints.wave16-joan.cloud.goog"
+host: "endpoints-oa-ce.endpoints.sbt-endpoints.cloud.goog"
 #x-google-endpoints:
 #- name: "endpoints-oa-ce.endpoints.wave16-joan.cloud.goog"
 #  target: "35.228.1.226"
@@ -142,6 +142,5 @@ securityDefinitions:
     authorizationUrl: ""
     flow: "implicit"
     type: "oauth2"
-    x-google-issuer: "edit21@wave16-joan.iam.gserviceaccount.com"
-    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/edit21@wave16-joan.iam.gserviceaccount.com"
-
+    x-google-issuer: "endpoints-sa@sbt-endpoints.iam.gserviceaccount.com"
+    x-google-jwks_uri: "https://www.googleapis.com/robot/v1/metadata/x509/endpoints-sa@sbt-endpoints.iam.gserviceaccount.com"

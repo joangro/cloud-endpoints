@@ -4,7 +4,7 @@ info:
   title: "OpenAPI Kubernetes"
   description: "Example OpenAPI configuration to call Project Datastore"
   version: "1.0.0"
-host: "endpoints-oa-k8s.wave16-joan.appspot.com"
+host: "endpoints-oa-k8s.endpoints.sbt-endpoints.cloud.goog"
 
 # Mime types to/from API
 consumes:

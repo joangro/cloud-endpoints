@@ -12,8 +12,8 @@ main()
 	sudo docker build -t $IMAGE_NAME .
 
 	echo -e "\nPushing image to gcr.io ..."
-	sudo docker push $IMAGE_NAME
-
+	#sudo docker push $IMAGE_NAME
+	gcloud docker -- push $IMAGE_NAME
 	echo -e "\nDONE"
 	echo "Built image: $IMAGE_NAME"
 	echo "Run the following command to test it locally:"
@@ -38,6 +38,8 @@ while test $# -gt 0; do
 			IMAGE_VERSION=`echo ":$1" | sed -e 's/^[^=]*=//g'`
 			;;
 		*)
+			echo "Using default tag ':latest'"
+			IMAGE_VERSION=":latest"
 			main
 			exit 0
 			;;
