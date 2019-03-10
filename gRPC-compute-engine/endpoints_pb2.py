@@ -19,41 +19,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='endpoints',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0f\x65ndpoints.proto\x12\tendpoints\"\x18\n\x06\x45ntity\x12\x0e\n\x06\x65ntity\x18\x01 \x01(\t\"\x1c\n\x08UserList\x12\x10\n\x08username\x18\x01 \x03(\t\"\x18\n\x04User\x12\x10\n\x08username\x18\x01 \x01(\t\" \n\x0cUserReturned\x12\x10\n\x08username\x18\x01 \x01(\t2t\n\x05Users\x12\x34\n\x08GetUsers\x12\x11.endpoints.Entity\x1a\x13.endpoints.UserList\"\x00\x12\x35\n\x07getUser\x12\x0f.endpoints.User\x1a\x17.endpoints.UserReturned\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x65ndpoints.proto\x12\tendpoints\"\x1c\n\x08UserList\x12\x10\n\x08username\x18\x01 \x03(\t\"\x0e\n\x0c\x45mptyMessage\"%\n\x04User\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x0b\n\x03\x61ge\x18\x02 \x01(\x05\" \n\x0cUserReturned\x12\x10\n\x08username\x18\x01 \x01(\t\"\"\n\x0eStatusResponse\x12\x10\n\x08response\x18\x01 \x01(\t2\xef\x01\n\x05Users\x12:\n\x08GetUsers\x12\x17.endpoints.EmptyMessage\x1a\x13.endpoints.UserList\"\x00\x12\x35\n\x07getUser\x12\x0f.endpoints.User\x1a\x17.endpoints.UserReturned\"\x00\x12\x37\n\x07\x61\x64\x64User\x12\x0f.endpoints.User\x1a\x19.endpoints.StatusResponse\"\x00\x12:\n\ndeleteUser\x12\x0f.endpoints.User\x1a\x19.endpoints.StatusResponse\"\x00\x62\x06proto3')
 )
 
 
-
-
-_ENTITY = _descriptor.Descriptor(
-  name='Entity',
-  full_name='endpoints.Entity',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='entity', full_name='endpoints.Entity.entity', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=30,
-  serialized_end=54,
-)
 
 
 _USERLIST = _descriptor.Descriptor(
@@ -82,8 +51,32 @@ _USERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=56,
-  serialized_end=84,
+  serialized_start=30,
+  serialized_end=58,
+)
+
+
+_EMPTYMESSAGE = _descriptor.Descriptor(
+  name='EmptyMessage',
+  full_name='endpoints.EmptyMessage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=60,
+  serialized_end=74,
 )
 
 
@@ -101,6 +94,13 @@ _USER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='age', full_name='endpoints.User.age', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -113,8 +113,8 @@ _USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=86,
-  serialized_end=110,
+  serialized_start=76,
+  serialized_end=113,
 )
 
 
@@ -144,22 +144,47 @@ _USERRETURNED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=112,
-  serialized_end=144,
+  serialized_start=115,
+  serialized_end=147,
 )
 
-DESCRIPTOR.message_types_by_name['Entity'] = _ENTITY
+
+_STATUSRESPONSE = _descriptor.Descriptor(
+  name='StatusResponse',
+  full_name='endpoints.StatusResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='response', full_name='endpoints.StatusResponse.response', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=149,
+  serialized_end=183,
+)
+
 DESCRIPTOR.message_types_by_name['UserList'] = _USERLIST
+DESCRIPTOR.message_types_by_name['EmptyMessage'] = _EMPTYMESSAGE
 DESCRIPTOR.message_types_by_name['User'] = _USER
 DESCRIPTOR.message_types_by_name['UserReturned'] = _USERRETURNED
+DESCRIPTOR.message_types_by_name['StatusResponse'] = _STATUSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
-Entity = _reflection.GeneratedProtocolMessageType('Entity', (_message.Message,), dict(
-  DESCRIPTOR = _ENTITY,
-  __module__ = 'endpoints_pb2'
-  # @@protoc_insertion_point(class_scope:endpoints.Entity)
-  ))
-_sym_db.RegisterMessage(Entity)
 
 UserList = _reflection.GeneratedProtocolMessageType('UserList', (_message.Message,), dict(
   DESCRIPTOR = _USERLIST,
@@ -167,6 +192,13 @@ UserList = _reflection.GeneratedProtocolMessageType('UserList', (_message.Messag
   # @@protoc_insertion_point(class_scope:endpoints.UserList)
   ))
 _sym_db.RegisterMessage(UserList)
+
+EmptyMessage = _reflection.GeneratedProtocolMessageType('EmptyMessage', (_message.Message,), dict(
+  DESCRIPTOR = _EMPTYMESSAGE,
+  __module__ = 'endpoints_pb2'
+  # @@protoc_insertion_point(class_scope:endpoints.EmptyMessage)
+  ))
+_sym_db.RegisterMessage(EmptyMessage)
 
 User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), dict(
   DESCRIPTOR = _USER,
@@ -182,6 +214,13 @@ UserReturned = _reflection.GeneratedProtocolMessageType('UserReturned', (_messag
   ))
 _sym_db.RegisterMessage(UserReturned)
 
+StatusResponse = _reflection.GeneratedProtocolMessageType('StatusResponse', (_message.Message,), dict(
+  DESCRIPTOR = _STATUSRESPONSE,
+  __module__ = 'endpoints_pb2'
+  # @@protoc_insertion_point(class_scope:endpoints.StatusResponse)
+  ))
+_sym_db.RegisterMessage(StatusResponse)
+
 
 
 _USERS = _descriptor.ServiceDescriptor(
@@ -190,15 +229,15 @@ _USERS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=146,
-  serialized_end=262,
+  serialized_start=186,
+  serialized_end=425,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetUsers',
     full_name='endpoints.Users.GetUsers',
     index=0,
     containing_service=None,
-    input_type=_ENTITY,
+    input_type=_EMPTYMESSAGE,
     output_type=_USERLIST,
     serialized_options=None,
   ),
@@ -209,6 +248,24 @@ _USERS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_USER,
     output_type=_USERRETURNED,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='addUser',
+    full_name='endpoints.Users.addUser',
+    index=2,
+    containing_service=None,
+    input_type=_USER,
+    output_type=_STATUSRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='deleteUser',
+    full_name='endpoints.Users.deleteUser',
+    index=3,
+    containing_service=None,
+    input_type=_USER,
+    output_type=_STATUSRESPONSE,
     serialized_options=None,
   ),
 ])
