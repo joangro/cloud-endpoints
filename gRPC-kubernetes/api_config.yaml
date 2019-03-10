@@ -12,3 +12,33 @@ usage:
   rules:
   - selector: endpoints.Users.GetUsers
     allow_unregistered_calls: true
+
+authentication:
+  providers:
+  - id: google_service_account
+    issuer: endpoints-sa@sbt-endpoints.iam.gserviceaccount.com
+    jwks_uri: https://www.googleapis.com/robot/v1/metadata/x509/endpoints-sa@sbt-endpoints.iam.gserviceaccount.com
+  rules:
+  - selector: endpoints.Users.addUser
+    requirements:
+      - provider_id: google_service_account
+
+metrics:
+  - name: "get-user-quota"
+    display_name: "Maximum number of getUsers per minute"
+    value_type: INT64
+    metric_kind: DELTA
+
+
+quota:
+  limits:
+    - name: "get-user-limits"
+      metric: "get-user-quota"
+      unit: "1/min/{project}"
+      values:
+        STANDARD: 5
+  metric_rules:
+    - metric_costs:
+        "get-user-quota": 1
+      selector: endpoints.Users.getUser
+

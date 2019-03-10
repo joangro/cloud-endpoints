@@ -30,25 +30,30 @@ class UsersClient():
 
     def add_user(self, user="asdasd"):
         user_to_add = endpoints_pb2.User(username=user, age=23)
-        response = self.stub.addUser(user_to_add, metadata=addMetadata())
+        metadata = addMetadata()
+        from jwt_token import service_account
+        metadata.append(('authorization', 'Bearer ' + service_account('k8s')))
+        response = self.stub.addUser(user_to_add, metadata=metadata)
         return response
 
     def delete_user(self, user="test2"):
         user_to_delete = endpoints_pb2.User(username=user)
-        response = self.stub.deleteUser(user_to_delete, metadata=addMetadata())
+        metadata = addMetadata()
+        response = self.stub.deleteUser(user_to_delete, metadata=metadata)
         return response
 
 def addMetadata(api_key = "AIzaSyCsNkXwvCbqpdmTw7vS-I2YUAa8BS8gg04"):
     metadata = []
-    return metadata.append(('x-api-key', api_key))
+    metadata.append(('x-api-key', api_key))
+    return metadata
 
 client = UsersClient()
 
 print(client.get_users())
 
 print(client.get_user(user="Joan"))
-'''
+
 print(client.add_user(user="toRemove"))
 print(client.delete_user(user="toRemove"))
-'''
+
 #print(client.get_user())
