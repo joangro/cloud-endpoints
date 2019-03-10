@@ -19,16 +19,14 @@ class UsersServicer(endpoints_pb2_grpc.UsersServicer):
         '''
         Implements the GetUsers method defined under the Users service. Gets all users from Datastore
         '''
-        client = datastore.Client(project="wave16-joan")
+        client = datastore.Client()
 
         query = client.query(kind='Stack-user')
         users = list(query.fetch())
-        
         user_list = endpoints_pb2.UserList()
-        
         for user in users:
             user_list.username.append(user['username'])
-        
+
         return user_list
 
     def getUser(self, request, context):
@@ -36,7 +34,7 @@ class UsersServicer(endpoints_pb2_grpc.UsersServicer):
         Get a single user from Datastore
         '''
         user_to_get = request.username
-        client = datastore.Client(project="wave16-joan")
+        client = datastore.Client()
 
         query = client.query(kind='Stack-user')
         query.add_filter('username', '=', user_to_get)
@@ -44,7 +42,51 @@ class UsersServicer(endpoints_pb2_grpc.UsersServicer):
         user = endpoints_pb2.UserReturned(username=datastore_user['username'])
         return user
 
+    def addUser(self, request, context):
+        user_to_add = request.username
+        client=datastore.Client()
+        query = client.query(kind='Stack-user')
+        query.add_filter('username', '=', user_to_add)
 
+        try:
+            age = int(request.age)
+        except:
+            age = None
+
+        response = endpoints_pb2.StatusResponse()
+
+        try:
+            # If it succeeds, it means that the user exists
+            queried_user = list(query.fetch())[0]
+            response.response = "User already exists"
+            return response
+        except IndexError:
+            key = client.key('Stack-user')
+            entity = datastore.Entity(key=key)
+            entity.update({
+                "username": user_to_add,
+                    "age": age
+                    })
+            client.put(entity)
+            response.response = "User {} has been added".format(user_to_add)
+            return response
+
+    def deleteUser(self, request, context):
+        client=datastore.Client()
+        user_to_delete = request.username
+        query = client.query(kind='Stack-user')
+        query.add_filter('username', '=', user_to_delete)
+        query.keys_only()
+        user = list(query.fetch())
+        if not user:
+            return endpoints_pb2.StatusResponse(response="user doesn't exist")
+        
+        try:
+            client.delete(user[0].key)
+            
+            return endpoints_pb2.StatusResponse(response="User {} deleted".format(user_to_delete))
+        except:
+            return endpoints_pb2.StatusResponse(response="user could not be deleted")
 
 
 

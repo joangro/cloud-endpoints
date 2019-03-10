@@ -16,13 +16,23 @@ class UsersStub(object):
     """
     self.GetUsers = channel.unary_unary(
         '/endpoints.Users/GetUsers',
-        request_serializer=endpoints__pb2.Entity.SerializeToString,
+        request_serializer=endpoints__pb2.EmptyMessage.SerializeToString,
         response_deserializer=endpoints__pb2.UserList.FromString,
         )
     self.getUser = channel.unary_unary(
         '/endpoints.Users/getUser',
         request_serializer=endpoints__pb2.User.SerializeToString,
         response_deserializer=endpoints__pb2.UserReturned.FromString,
+        )
+    self.addUser = channel.unary_unary(
+        '/endpoints.Users/addUser',
+        request_serializer=endpoints__pb2.User.SerializeToString,
+        response_deserializer=endpoints__pb2.StatusResponse.FromString,
+        )
+    self.deleteUser = channel.unary_unary(
+        '/endpoints.Users/deleteUser',
+        request_serializer=endpoints__pb2.User.SerializeToString,
+        response_deserializer=endpoints__pb2.StatusResponse.FromString,
         )
 
 
@@ -44,18 +54,42 @@ class UsersServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def addUser(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def deleteUser(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_UsersServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetUsers': grpc.unary_unary_rpc_method_handler(
           servicer.GetUsers,
-          request_deserializer=endpoints__pb2.Entity.FromString,
+          request_deserializer=endpoints__pb2.EmptyMessage.FromString,
           response_serializer=endpoints__pb2.UserList.SerializeToString,
       ),
       'getUser': grpc.unary_unary_rpc_method_handler(
           servicer.getUser,
           request_deserializer=endpoints__pb2.User.FromString,
           response_serializer=endpoints__pb2.UserReturned.SerializeToString,
+      ),
+      'addUser': grpc.unary_unary_rpc_method_handler(
+          servicer.addUser,
+          request_deserializer=endpoints__pb2.User.FromString,
+          response_serializer=endpoints__pb2.StatusResponse.SerializeToString,
+      ),
+      'deleteUser': grpc.unary_unary_rpc_method_handler(
+          servicer.deleteUser,
+          request_deserializer=endpoints__pb2.User.FromString,
+          response_serializer=endpoints__pb2.StatusResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

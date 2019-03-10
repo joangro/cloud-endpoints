@@ -1,7 +1,7 @@
 type: google.api.Service
 config_version: 3
 
-name: grpc-oa.endpoints.wave16-joan.cloud.goog
+name: grpc-k8s.endpoints.sbt-endpoints.cloud.goog
 
 title: gRPC-k8s
 
@@ -11,6 +11,4 @@ apis:
 usage:
   rules:
   - selector: endpoints.Users.GetUsers
-    allow_unregistered_calls: true
-  - selector: endpoints.Users.getUser
     allow_unregistered_calls: true
