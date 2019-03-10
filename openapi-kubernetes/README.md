@@ -58,7 +58,7 @@ gcloud container clusters create YOUR-CLUSTER-NAME \
                                  --zone=YOUR-CLUSTER-ZONE \
                                  --machine-type=n1-standard-1 \
                                  --num-nodes=1 \
-                                 --scopes=cloud-platform
+                                 --scopes=cloud-platform,datastore
 ```
 
 3. Get cluster credentials:
