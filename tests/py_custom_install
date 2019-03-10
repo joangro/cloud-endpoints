@@ -69,4 +69,4 @@ main()
 
 main
 
-alias ll='py_custom_install $(pwd) && if [[ $( echo $?) == 0 ]]; then source $(pwd)/env/bin/activate; fi'
+alias pyp='py_custom_install $(pwd) && if [[ $( echo $?) == 0 ]]; then source $(pwd)/env/bin/activate; fi'
