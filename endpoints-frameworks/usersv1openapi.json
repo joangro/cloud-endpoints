@@ -31,7 +31,7 @@
       "type": "object"
     }
   },
-  "host": "endpoints-frameworks.wave16-joan.appspot.com",
+  "host": "endpoints-frameworks.sbt-endpoints.appspot.com",
   "info": {
     "title": "users",
     "version": "v1"

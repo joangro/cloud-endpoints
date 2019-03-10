@@ -13,7 +13,7 @@ handlers:
 env_variables:
   # The following values are to be replaced by information from the output of
   # 'gcloud endpoints services deploy swagger.json' command.
-  ENDPOINTS_SERVICE_NAME: endpoints-frameworks.wave16-joan.appspot.com
+  ENDPOINTS_SERVICE_NAME: endpoints-frameworks.sbt-endpoints.appspot.com
 
 
 libraries:

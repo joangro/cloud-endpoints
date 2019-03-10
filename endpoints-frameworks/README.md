@@ -24,3 +24,8 @@ dev_appserver.py ./app.yaml
 ```
 gcloud app deploy --version last
 ```
+
+
+5. Test:
+
+curl <...>/_ah/api/users/v1/users
