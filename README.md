@@ -1,6 +1,6 @@
 # Google Cloud Endpoints #
 
-![Endpoints logo](https://3.imimg.com/data3/FE/PW/MY-12444595/qq-500x500.jpg)
+![Endpoints logo](https://3.imimg.com/data3/FE/PW/MY-12444595/qq-500x500.jpg =250x250)
 
 Example implementations of the [Google Cloud Endpoints](https://cloud.google.com/endpoints/) API Managment service. 
 Cloud Endpoints offers the possibility to implement and API service with three communications protocols: OpenAPI, gRPC and Endpoints Frameworks.
