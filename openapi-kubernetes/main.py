@@ -9,7 +9,7 @@ api = Api(app)
 
 def DatastoreClient():
     return datastore.Client(
-                project="wave16-joan"
+                project="sbt-endpoints"
             )
 
     
@@ -25,8 +25,11 @@ class StackUser(Resource):
         client = DatastoreClient()
         query = client.query(kind='Stack-user')
         query.add_filter('username', '=', user_id)
-        user = list(query.fetch(1))[0]
-        return jsonify({"username": user['username']})
+        try:
+            user = list(query.fetch(1))[0]
+            return jsonify({"username": user['username']})
+        except:
+            return "User not found", 404
 
     def put(self, user_id):
         parser = reqparse.RequestParser()
@@ -71,4 +74,5 @@ api.add_resource(StackUser,'/users/<user_id>')
 
 
 if __name__ == "__main__":
-    app.run("127.0.0.1", 8080, debug=True)
+    app.run("0.0.0.0", 8080, debug=True)
+
