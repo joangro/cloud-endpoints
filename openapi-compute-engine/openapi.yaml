@@ -5,9 +5,9 @@ info:
   description: "Example OpenAPI configuration to call Project Datastore, from Compute Engine"
   version: "1.0.0"
 host: "endpoints-oa-ce.endpoints.sbt-endpoints.cloud.goog"
-#x-google-endpoints:
-#- name: "endpoints-oa-ce.endpoints.wave16-joan.cloud.goog"
-#  target: "35.228.1.226"
+x-google-endpoints:
+- name: "endpoints-oa-ce.endpoints.sbt-endpoints.cloud.goog"
+  target: "34.76.235.214"
 
 # Mime types to/from API
 consumes:
