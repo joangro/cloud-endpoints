@@ -92,7 +92,7 @@ class User(ndb.Model):
         '''
         query = User.query()
         users = query.fetch()
-        return query
+        return users
 
     @classmethod
     def query_user(cls, user):
